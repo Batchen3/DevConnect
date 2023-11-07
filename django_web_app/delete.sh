@@ -8,4 +8,3 @@ fi
 docker stop dev_connect_app_con
 docker rm dev_connect_app_con
 docker rmi dev_connect_app:${version}
-# docker volume rm data-vol
