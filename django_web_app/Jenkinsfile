@@ -13,7 +13,7 @@ pipeline {
             steps {
                 dir('django_web_app'){
                     sh "chmod +x manage.py"
-                    sh "./manage.py test"
+                    sh "python ./manage.py test"
                 }
             }
         }
