@@ -5,6 +5,7 @@ pipeline {
             steps {
                 echo 'Hello world!'
                 sh "cd django_web_app/"
+                sh "ls"
                 sh "docker build -t batchen-jenkins:0.1.0 ."
                 sh "docker images"
             }
