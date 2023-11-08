@@ -1,12 +1,25 @@
 pipeline {
     agent any 
     stages {
-        stage('Stage 1') {
+        stage('Build') {
             steps {
-                echo 'Hello world!' 
-                sh "ls"
-                sh "docker ps"
+                echo 'Hello world!'
+                sh "cd django_web_app/"
+                sh "docker build -t batchen-jenkins:0.1.0 ."
+                sh "docker images"
             }
         }
     }
+    post {
+        always {
+            deleteDir() /* clean up our workspace */
+        }
+        success {
+            echo 'build succeeded!'
+        }
+        failure {
+            echo 'the pipeline failed :('
+        }
+    }
 }
+
