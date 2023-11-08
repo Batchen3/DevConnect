@@ -9,11 +9,18 @@ pipeline {
                 }
             }
         }
+        stage('Test') {
+            steps {
+                dir('django_web_app'){
+                    sh "./manage.py test"
+                }
+            }
+        }
     }
     post {
-        // always {
-        //     deleteDir() /* clean up our workspace */
-        // }
+        always {
+            deleteDir() 
+        }
         success {
             echo 'build succeeded!'
         }
