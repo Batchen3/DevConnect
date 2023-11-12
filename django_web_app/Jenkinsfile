@@ -25,7 +25,7 @@ pipeline {
             steps {
                 dir('django_web_app'){
                     sh 'docker tag dev_connect_app:1.0.4 me-west1-docker.pkg.dev/devconnect-project/batchen-artifacts/dev_connect_app:1.0.4'
-                    sh 'docker me-west1-docker.pkg.dev/devconnect-project/batchen-artifacts/dev_connect_app:1.0.4'
+                    sh 'docker push me-west1-docker.pkg.dev/devconnect-project/batchen-artifacts/dev_connect_app:1.0.4'
                 }
             }
         }
