@@ -1,9 +1,9 @@
 pipeline {
     agent any 
 
-    environment {
-        PATH = "${tool 'Python3'}/bin:${env.PATH}"
-    }
+    // environment {
+    //     PATH = "${tool 'Python3'}/bin:${env.PATH}"
+    // }
     stages {
         stage('Build') {
             steps {
@@ -16,9 +16,9 @@ pipeline {
         stage('Test') {
             steps {
                 dir('django_web_app'){
-                   // sh "sudo apt-get install -y python3"
+                    //sh "sudo apt-get install -y python3"
                     //sh "chmod +x manage.py"
-                    sh 'pip install -r requirements.txt'
+                    //sh 'pip install -r requirements.txt'
                     sh "python ./manage.py test"
                 }
             }
