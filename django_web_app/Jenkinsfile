@@ -12,7 +12,8 @@ pipeline {
         stage('Test') {
             steps {
                 dir('django_web_app'){
-                    sh "chmod +x manage.py"
+                    //sh "chmod +x manage.py"
+                    sh 'pip install -r requirements.txt'
                     sh "python ./manage.py test"
                 }
             }
