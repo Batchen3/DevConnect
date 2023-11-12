@@ -16,7 +16,7 @@ pipeline {
         stage('Test') {
             steps {
                 dir('django_web_app'){
-                    sh "docker run --name dev_connect_app_con -d -p 8000:8000 dev_connect_app:1.0.4"
+                    sh "docker run --name dev_connect_app_con_1 -d -p 8000:8800 dev_connect_app:1.0.4"
                     sh "docker exec -it dev_connect_app_con python manage.py test"
                     //sh "sudo apt-get install -y python3"
                     //sh "sudo apt-get install -y python3"
