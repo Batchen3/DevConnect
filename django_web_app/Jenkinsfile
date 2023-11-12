@@ -1,12 +1,12 @@
 pipeline {
     agent any 
 
-    // environment {
-    //     PATH = "${tool 'Python3'}/bin:${env.PATH}"
-    // }
     stages {
         stage('Build') {
             steps {
+                echo "try----"
+                def commitMessage = sh(script: 'git log -1 --pretty=%B', returnStdout: true).trim()
+                echo "Commit Message!!!!!!!: ${commitMessage}"
                 dir('django_web_app'){
                     sh "docker build -t dev_connect_app:1.0.4 ."
                     sh "docker images"
