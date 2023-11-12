@@ -16,29 +16,16 @@ pipeline {
         stage('Test') {
             steps {
                 dir('django_web_app'){
-                    sh "docker run --name dev_connect_app_con_4 -d -p 8700:8000 dev_connect_app:1.0.4"
-                    sh "docker exec dev_connect_app_con_4 python manage.py test"
-                    //sh "sudo apt-get install -y python3"
-                    //sh "sudo apt-get install -y python3"
-                    //sh "chmod +x manage.py"
-                    //sh "python3 -m venv .venv"
-                    //sh "source .venv/bin/activate"
-                    //sh "python3 -m pip install -r requirements.txt"
-                    //sh "python manage.py test"
-                    // echo 'Running Django tests...'
-                    // sh 'ls Django-WebApp/django_web_app/'
-                    // sh 'docker ps'
-                    // sh 'docker exec devconnect-con9 ls'
-                    // sh 'docker exec devconnect-con9 python django_web_app/manage.py test'
-                
-
-
-
-
-
-
-
-
+                    sh "docker run --name dev_connect_app_con_5 -d -p 8780:8000 dev_connect_app:1.0.4"
+                    sh "docker exec dev_connect_app_con_5 python manage.py test"
+                }
+            }
+        }
+          stage('Push') {
+            steps {
+                dir('django_web_app'){
+                    sh 'docker tag dev_connect_app:1.0.4 me-west1-docker.pkg.dev/devconnect-project/batchen-artifacts/dev_connect_app:1.0.4'
+                    sh 'docker me-west1-docker.pkg.dev/devconnect-project/batchen-artifacts/dev_connect_app:1.0.4'
                 }
             }
         }
