@@ -18,10 +18,10 @@ pipeline {
                 dir('django_web_app'){
                     //sh "sudo apt-get install -y python3"
                     //sh "chmod +x manage.py"
-                    sh "python3 -m venv .venv"
+                    //sh "python3 -m venv .venv"
                     //sh "source .venv/bin/activate"
-                    sh "python3 -m pip install -r requirements.txt"
-                    sh "python3 ./manage.py test"
+                    //sh "python3 -m pip install -r requirements.txt"
+                    sh "./manage.py test"
                 }
             }
         }
