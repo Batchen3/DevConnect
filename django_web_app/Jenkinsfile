@@ -8,7 +8,7 @@ pipeline {
         stage('Build') {
             steps {
                 dir('django_web_app'){
-                    sh "docker build -t batchen-jenkins:0.1.0 ."
+                    sh "docker build -t batchen-app:1.0.4 ."
                     sh "docker images"
                 }
             }
@@ -16,12 +16,14 @@ pipeline {
         stage('Test') {
             steps {
                 dir('django_web_app'){
+                    sh "docker run --mount type=bind,source="$(pwd)"/db.sqlite3,target=/usr/src/app/db.sqlite3 -d -p 8000:8000 --name batchen-app-con batchen-app:1.0.4"
+                    sh "docker exec -it batchen-app-con /bin/bash python manage.py test"
                     //sh "sudo apt-get install -y python3"
                     //sh "chmod +x manage.py"
                     //sh "python3 -m venv .venv"
                     //sh "source .venv/bin/activate"
                     //sh "python3 -m pip install -r requirements.txt"
-                    sh "python manage.py test"
+                    //sh "python manage.py test"
                 }
             }
         }
